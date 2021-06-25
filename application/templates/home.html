@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="text/css" href="{% static 'images/logo.jpg' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'jquery/sample.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <style >
+    * {
+        box-sizing: border-box;
+      }
+      .fa 
+      {
+        padding: 5px;
+        font-size: 10px;
+        width: 30px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+      }
+      .fa:hover 
+      {
+          opacity: 0.7;
+      }
+      .fa-facebook 
+      {
+        background: #3B5998;
+        color: white;
+      }
+      .fa-twitter 
+      {
+        background: #55ACEE;
+        color: white;
+      }
+      .fa-linkedin 
+      {
+        background: #007bb5;
+        color: white;
+      }
+      .fa-youtube 
+      {
+        background: #bb0000;
+        color: white;
+      }
+      .fa-instagram 
+      {
+        background: #125688;
+        color: white;
+      }
+      .column 
+      {
+        float: left;
+        width: 33.33%;
+        padding: 15px;
+        height: 150px;
+      }
+      .row:after 
+      {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    .footer
+    {
+      position: relative;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color:#00ff00;      
+    }
+  </style>
+</head>
+<body>
+
+	{% include 'nav.html' %}
+
+	{% block content %}
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li style="width: 10px; height: 10px; border-radius: 100%;" data-target="#demo" data-slide-to="0" class="active" ></li>
+      <li style="width: 10px; height: 10px; border-radius: 100%;" data-target="#demo" data-slide-to="1"></li>
+      <li style="width: 10px; height: 10px; border-radius: 100%;" data-target="#demo" data-slide-to="2"></li>
+      <li style="width: 10px; height: 10px; border-radius: 100%;" data-target="#demo" data-slide-to="3"></li>
+      <li style="width: 10px; height: 10px; border-radius: 100%;" data-target="#demo" data-slide-to="4"></li>
+    </ul>
+    
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/Auct-1.jpg' %}" alt="Welcome" width="1366px" height="310px">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/Auct-2.jpg' %}" alt="Chicago" width= "1366px" height="310px">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/Auct-3.jpg' %}" alt="Welcome" width="1366px" height="310px">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/Auct-4.png' %}" alt="Welcome" width="1366px" height="310px">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/Auct-5.jpg' %}" alt="Welcome" width="1366px" height="310px">
+      </div>
+    </div>
+    
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  <div class="container-fluid">
+    <img src="{% static 'images/Mid-1.jpg' %}" width="1300px" height="250px" style="margin-left: 0px">
+  </div>
+	{% endblock %}
+  <div class="footer" >
+    <div class="container-fluid">
+      <div class="row">
+        <div class="column" style="background-color:#00ff00;">
+            <h4>Useful links :</h4>
+            <pre>
+              <a href="{% static 'images/Bidding_kit.pdf' %}" target="blank" style="font-family: Times New Roman; font-size: 18px;">Bidder Manual</a>
+              <a href="#" style="font-family: Times New Roman; font-size: 18px;">FAQ</a>
+              <a href="#" style="font-family: Times New Roman; font-size: 18px;">Portal policies</a>
+            </pre>
+        </div>
+        <div class="column" style="background-color:#00ff00;">
+            <h4>Reach us :</h4>
+            <pre style="font-family: Times New Roman; font-size: 18px;">
+              ⌂ H.No 14-2-158,
+                TP Area, opposite Kalyan residency,
+                Tirupati,
+                Andhra Pradesh-517501
+            </pre>
+          </div>
+          <div class="column" style="background-color:#00ff00;">
+            <h4>Get in Touch :</h4>
+            <pre style="font-family: Times New Roman; font-size: 18px;">
+              ☏ 0877-2242959
+              ✆ +916307898959
+              ✉ auctionmart001@gmail.com
+            </pre>
+          </div>
+      </div>
+     <div class="row">
+         <h4>Follow us :</h4>
+          <ul style="list-style-type:none;">
+            <li></li>
+            <a href="https://www.facebook.com/profile.php?id=100067640540106" class="fa fa-facebook" 
+              target="blank"></a>
+            <a href="https://twitter.com/mart_auction" class="fa fa-twitter" target="blank"></a>
+            <a href="https://www.linkedin.com/in/auction-mart-77b376212/" class="fa fa-linkedin" target="blank"></a>
+            <a href="https://www.youtube.com/channel/UCfcytWu7HwishKwRnTu0wrw" target="blank" class="fa fa-youtube"></a>
+            <a href="https://www.instagram.com/auctionmart001/" class="fa fa-instagram" target="blank"></a>
+          </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

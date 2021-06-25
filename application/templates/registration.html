@@ -1,0 +1,85 @@
+{% extends 'header.html' %}
+{% block title %}register{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card col-md-6 mx-auto mt-4 shadow-lg">
+        <h3 class="bg-warning text-dark text-center p-2 border rounded mt-3">Registration</h3>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>
+                            <b>First Name</b><br>
+                            <input type="text" name="fname" placeholder="First name" required>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <b>Last Name</b><br>
+                            <input type="text" name="lname" placeholder="Last name" required>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td>
+                            <b>Username</b><br>
+                            <input type="text" name="username" placeholder="Username" required>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <b>E-Mail</b><br>
+                            <input type="email" name="email" placeholder="Mail id" required>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td>
+                            <b>Password</b><br>
+                            <input type="password" name="password1" placeholder="Password" required>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <b>Confirm password</b><br>
+                            <input type="password" name="password2" placeholder="Re-enter Password" required>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td>
+                            <input type="reset" value="Reset">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="Submit" name="Register">
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    {% for message in messages %}
+                        <h5 style="color: red;">{{message}}</h5>
+                    {% endfor %}
+                </div>
+
+            </form>
+            
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+
+{% endblock %}

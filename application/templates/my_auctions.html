@@ -1,0 +1,38 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+<h2> My auctions </h2>
+{% if my_bids_list %}
+<ul class="my-bid-list">
+    {% for bid in my_bids_list %}
+        <li class="my-bid-li"><a class="my-bid-link" href="{% url 'product_detail' bid.product_id.id %}">{{ bid.product_id.product_name }}</a>
+            <hr>
+            <div class="my-bid-date">({{ bid.created }})</div>
+            {% if bid.product_id.is_active %}
+                <span class="my-auction-status-active">
+                    Pending
+                </span>
+                <span class="my-auction-value">
+                    ₹{{ bid.product_id.minimum_price }}/-
+                </span>
+            {% else %}
+                {% if bid.product_id.final_value %}
+                    <span class="my-auction-status-resolved">
+                        Final value: {{ bid.product_id.final_value }}$
+                    </span>
+                {% else %}
+                    <span class="my-auction-status-no_winner">
+                        No winner
+                    </span>
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <h4>No auctions are available.</h4>
+{% endif %}
+
+{% endblock %}
+

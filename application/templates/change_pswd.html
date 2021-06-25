@@ -1,0 +1,35 @@
+{% extends 'header.html' %}
+{% block title %}Change Password{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card col-md-6 mx-auto mt-5 shadow-lg">
+        <h3 class="text-center text-white bg-info border rounded p-2 my-2">Change Password</h3>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                <input type="password" name="old_pswd" placeholder="Old Password" class="form-control my-2" required>
+                <input type="password" name="new_pswd" placeholder="New Password" class="form-control my-2" required>
+                <input type="password" name="con_pswd" placeholder="Confirm Password" class="form-control my-2" required>
+                <div class="row">
+                        <div class="col">
+                            <center>
+                                <input type="submit" value="Submit" class="btn btn-success col-sm">
+                            </center>
+                            
+                        </div>
+                </div>
+                <br>
+                
+                <div>
+                    <center>
+                        {% for message in messages %}
+                            <h6 style="color:black;">{{message}}</h6>
+                        {% endfor %}
+                    </center>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'product_form_base.html' %}
+{% load static %}
+{% block head %}
+    <style>
+        
+
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .blank_row {
+            height: 10px !important; 
+            background-color: #FFFFFF;
+        }
+
+        .image {
+            max-width: 280px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="image">
+            <img src="{{ product_list.image.url }}" class="img-responsive img-thumbnail" style="max-height:250px;" alt="image of Product">
+        </div>
+            <br><br>
+            <table style='margin: auto'>
+                <tr>
+                    <td style="font-size: 20px; text-align: right; color: chocolate;"><b>Product Name : </b></td>
+                    <td style="font-size: 20px;font-family: Comic Sans MS, serif; color: orangered">{{ product_list.product_name }}</td>
+                </tr>
+                <tr class="blank_row">
+
+                </tr>
+                <tr>
+                    <td style="font-size: 20px;text-align: right;  color: chocolate;"><b>Minimum Price : </b></td>
+                    <td style="font-size: 20px;font-family: Comic Sans MS, serif; color: orangered">₹ {{ product_list.minimum_price }} /-</td>
+                </tr>
+                <tr class="blank_row">
+                <tr>
+                    <td style="font-size: 20px;text-align: right;  color: chocolate;"><b>Bid End Date : </b></td>
+                    <td style="font-size: 20px;font-family: Comic Sans MS, serif; color: orangered">{{ product_list.bid_end_date }}</td>
+                </tr>
+                <tr class="blank_row"></tr>
+                <tr class="blank_row"></tr>
+            </table>
+
+                    
+
+
+            {% if product_list.is_active %}
+                {% if request.user.id  !=  seller.user_name_id %}
+                    <div class="error">
+                        {% if error %}
+                            <center>
+                                {{ error }}
+                            </center>
+                        {% endif %}
+                    </div>
+                    <form action="{% url 'save_bid' %}" method="POST">{% csrf_token %}
+                        <div class="form-group" style="margin-right:395px;margin-left: 395px">
+                            <input type="text" class="form-control" id="bid_amount" name="bid_amount"
+                                   placeholder="Enter your bid amount" required><br>
+                            <input type="hidden" value='{{ product_list.minimum_price }}' name="minimum_price"
+                                   id="minimum_price">
+                            <input type="hidden" value='{{ product_list.id }}' name="product_id" id="product_id">
+                            <button class="btn btn-lg btn-block" type="submit"
+                                    style="background-color: black; color: white">Bid
+                            </button>
+                        </div>
+                    </form>
+                {% endif %}
+                <center>
+                    <div>
+                        <a href="{% url 'bidder_list' product_list.id %}" class="btn btn-info" role="button"> Bidder List</a>
+                        {% if  request.user.id == seller.user_name_id %}
+                            <a href="{% url 'delete_product' product_list.id %}" class="btn btn-info" role="button"> Delete</a>
+                        {% endif %}
+                    </div>
+                </center>
+            {% else %}
+                <center>
+                    <a href="{% url 'bidder_list' product_list.id %}" class="btn btn-info" role="button"> Bidder List</a>
+                </center>
+            {% endif %}
+    <br><br><br>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'header.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card col-md-6 mx-auto mt-5 shadow-lg">
+        <h3 class="text-center text-white bg-info border rounded p-2 my-2">Login</h3>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                <input type="text" name="username" placeholder="Username" class="form-control my-2" required>
+                <input type="password" name="password" placeholder="Password" class="form-control my-2" required>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Sign in" class="btn btn-success col-sm">
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'registration' %}" class="btn btn-secondary col-sm">SignUp</a>
+                    </div>
+                </div>
+                <br>
+                
+                <div>
+                    <center>
+                        <h6><a href="{% url 'forgotPassword' %}">Forgot password</a></h6>
+                    </center>
+                </div>
+                <br>
+                <div>
+                    <center>
+                        {% for message in messages %}
+                            <h6 class="me" style="color: red;">{{message}}</h6>
+                            
+                        {% endfor %}
+                    </center>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

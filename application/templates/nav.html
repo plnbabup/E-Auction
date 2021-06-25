@@ -1,0 +1,55 @@
+{% load static %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'images/logo.jpg' %}" alt="logo" style="width:100px; height: 65px">
+  </a>
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'images/Brand-1.png' %}" alt="logo" style="width:350px; height:65px ">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="navbar-nav">
+    {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="btn btn-success" role="button" href="{% url 'aboutus' %}" style="margin-left: 550px; margin-right: 2px;">About us</a>
+      </li>
+    {% else %}
+      <li class="nav-item">
+        <a class="btn btn-success" role="button" href="{% url 'home' %}" style="margin-left: 395px; margin-right: 2px;">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-success" role="button" href="{% url 'view_product' %}" style="margin-right: 2px;">Auctions</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-success" role="button" href="{% url 'add_product' %}" style="margin-right: 2px;">Add Product</a>
+      </li>
+    {% endif %}
+  </ul>
+  <ul class="navbar-nav">
+    {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="btn btn-success" role="button" href="{% url 'registration' %}" style="margin-right: 2px;">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-success" role="button" href="{% url 'login' %}">Login</a>
+      </li>
+    {% else %} 
+      <li class="dropdown">
+        <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">
+          {{user.first_name}}
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'my_bids' %}">My Bids</a>
+          <a class="dropdown-item" href="{% url 'my_auctions' %}">My Auctions</a>
+          <a class="dropdown-item" href="{% url 'change_pswd' %}">Change password</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        </div>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+</nav>
